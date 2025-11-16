@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# 데이터셋 (용량 큼)
+datasets/
+data/
+*.mid
+*.midi
+*.wav
+*.mp3
+*.flac
+
+# 체크포인트 (용량 큼)
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.h5
+
+# 로그
+logs/
+*.log
+runs/
+wandb/
+
+# 생성된 파일
+generated/
+outputs/
+*.mid
+*.midi
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 임시 파일
+tmp/
+temp/
+*.tmp
