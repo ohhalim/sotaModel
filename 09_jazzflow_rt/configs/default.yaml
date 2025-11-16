@@ -1,0 +1,186 @@
+# JazzFlow-RT 기본 설정
+
+# Model Architecture
+model:
+  midi_vocab_size: 2048  # REMI tokenizer vocab size
+  chord_vocab_size: 256
+  hidden_dim: 512
+  num_layers: 6
+  num_heads: 8
+  ff_dim: 2048
+  chunk_size: 64
+  max_seq_len: 2048
+  num_style_levels: 9
+  dropout: 0.1
+
+# Training
+training:
+  # Data
+  data_dir: "./datasets/MAESTRO"
+  max_files: null  # null = all files
+
+  # Hyperparameters
+  epochs: 100
+  batch_size: 16
+  seq_len: 512
+  stride: 256
+
+  # Optimizer
+  learning_rate: 1.0e-4
+  weight_decay: 0.01
+  betas: [0.9, 0.98]
+
+  # Scheduler
+  warmup_steps: 4000
+  scheduler_type: "cosine"
+
+  # Regularization
+  grad_clip: 1.0
+  dropout: 0.1
+
+  # Mixed Precision
+  use_amp: true
+
+  # DataLoader
+  num_workers: 4
+  pin_memory: true
+
+  # Checkpointing
+  checkpoint_dir: "./checkpoints/pretrain"
+  save_every_epochs: 10
+  save_every_steps: 5000
+
+  # Logging
+  log_interval: 100
+  use_wandb: false
+  wandb_project: "jazzflow-rt"
+
+  # Random
+  seed: 42
+
+# Fine-tuning (QLoRA)
+finetuning:
+  # LoRA
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.1
+  lora_target_modules:
+    - "q_proj"
+    - "v_proj"
+    - "k_proj"
+    - "out_proj"
+    - "lm_head"
+
+  # QLoRA (4-bit quantization)
+  use_qlora: true
+  bnb_4bit_compute_dtype: "float16"
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_use_double_quant: true
+
+  # Training
+  epochs: 30
+  batch_size: 8
+  learning_rate: 1.0e-4
+  style_level: 6  # Bebop
+
+  # Data
+  jazz_data_dir: "./datasets/PiJAMA"
+
+  # Output
+  output_dir: "./models/jazzflow_finetuned"
+
+# Inference
+inference:
+  # Generation
+  temperature: 0.9
+  top_k: 20
+  top_p: 0.95
+  max_length: 1024
+
+  # Jazz-specific
+  default_style_level: 6
+  default_tempo: 140
+  default_time_signature: "4/4"
+
+  # Real-time
+  chunk_size: 64
+  use_cache: true
+
+  # Output
+  output_format: "midi"  # midi, audio, both
+  sample_rate: 48000  # for audio output
+
+# Evaluation
+evaluation:
+  # Metrics
+  compute_harmonic_consistency: true
+  compute_swing_ratio: true
+  compute_style_diversity: true
+  compute_chord_tone_usage: true
+
+  # Benchmarks
+  baseline_models:
+    - "improvnet"
+    - "bebopnet"
+    - "magenta_rt_finetuned"
+
+  # Human evaluation
+  num_judges: 20
+  samples_per_judge: 10
+
+# Jazz-specific
+jazz:
+  # Chord vocabulary
+  chord_types:
+    - "maj7"
+    - "7"
+    - "m7"
+    - "m7b5"
+    - "dim7"
+    - "aug"
+    - "6"
+    - "m6"
+    - "9"
+    - "m9"
+    - "maj9"
+    - "11"
+    - "13"
+    - "sus4"
+    - "sus2"
+
+  # Style levels
+  style_levels:
+    0: "classical"
+    1: "slightly_jazzy"
+    2: "light_jazz"
+    3: "moderate_jazz"
+    4: "swing"
+    5: "bop"
+    6: "bebop"
+    7: "hard_bop"
+    8: "full_jazz"
+
+  # Swing ratios
+  swing_ratios:
+    straight: 1.0
+    slight_swing: 1.3
+    medium_swing: 1.7
+    triplet_swing: 2.0
+    hard_swing: 2.5
+
+# Hardware
+hardware:
+  # Device
+  device: "cuda"  # cuda, cpu
+
+  # Memory optimization
+  gradient_checkpointing: false
+  gradient_accumulation_steps: 1
+
+  # Distributed training
+  distributed: false
+  num_gpus: 1
+
+  # Profiling
+  profile: false
+  profile_steps: 100

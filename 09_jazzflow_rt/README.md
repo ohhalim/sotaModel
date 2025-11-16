@@ -220,46 +220,71 @@ python training/finetune_qlora.py \
 
 ---
 
-## 📂 프로젝트 구조
+## 📂 프로젝트 구조 (완전한 구현!)
 
 ```
 09_jazzflow_rt/
 ├── README.md                          # 이 파일
-├── architecture/
-│   ├── jazzflow_rt.py                # 메인 아키텍처
-│   ├── chord_encoder.py              # 코드 인코더
-│   ├── hybrid_generator.py           # 하이브리드 생성기
-│   └── streaming_decoder.py          # 스트리밍 디코더
 │
-├── models/
-│   ├── probsparse_streaming.py       # 스트리밍 ProbSparse
-│   ├── jazz_style_injector.py        # 재즈 스타일 주입
-│   └── audio_tokenizer.py            # 오디오 토크나이저
+├── architecture/                      # ✅ 완전 구현
+│   └── jazzflow_rt.py                # 메인 모델 (700+ 줄)
+│       ├── ChordEncoder              # 재즈 화성 이론
+│       ├── StreamingProbSparseAttention  # 실시간 효율적 attention
+│       ├── JazzStyleInjector         # 스타일 제어
+│       ├── HybridGeneratorBlock      # 모든 기술 통합
+│       └── JazzFlowRT                # End-to-end 모델
 │
-├── training/
-│   ├── pretrain.py                   # 사전학습
-│   ├── finetune_qlora.py             # QLoRA 파인튜닝
-│   ├── dataset.py                    # 데이터셋 (MAESTRO + PiJAMA)
-│   └── config.yaml                   # 학습 설정
+├── data_processing/                   # ✅ 완전 구현
+│   ├── midi_tokenizer.py             # MIDI 토크나이저 (600+ 줄)
+│   │   ├── REMITokenizer             # REMI 방식
+│   │   └── CompoundTokenizer         # Compound 방식
+│   └── dataset.py                    # 완전한 데이터셋 (500+ 줄)
+│       ├── JazzMIDIDataset           # MAESTRO + PiJAMA 지원
+│       ├── Data augmentation         # Transpose, time stretch
+│       ├── Caching                   # 빠른 로딩
+│       └── Chord extraction          # 코드 진행 추출
 │
-├── inference/
-│   ├── live_jam.py                   # 실시간 잼 세션
-│   ├── generate.py                   # 배치 생성
-│   └── interactive_ui.py             # 웹 UI (Gradio)
+├── training/                          # ✅ 완전 구현
+│   ├── pretrain.py                   # 사전학습 (500+ 줄)
+│   │   ├── Mixed precision (AMP)
+│   │   ├── Gradient accumulation
+│   │   ├── Learning rate scheduling
+│   │   └── Wandb logging
+│   └── finetune_qlora.py             # QLoRA 파인튜닝 (500+ 줄)
+│       ├── 4-bit quantization
+│       ├── LoRA adaptation
+│       └── Jazz-specific training
 │
-├── evaluation/
-│   ├── benchmark.py                  # 벤치마크
-│   ├── metrics.py                    # 평가 메트릭
-│   └── human_eval.py                 # 사람 평가
+├── inference/                         # ✅ 완전 구현
+│   └── live_jam.py                   # 실시간 잼 세션 (400+ 줄)
+│       ├── Real-time generation
+│       ├── Chord progression tracking
+│       ├── Console visualization
+│       └── MIDI output
 │
-├── paper/
-│   ├── draft.md                      # 논문 초안
-│   ├── experiments.ipynb             # 실험 노트북
-│   └── figures/                      # 논문 그림
+├── evaluation/                        # ✅ 완전 구현
+│   └── metrics.py                    # 재즈 평가 메트릭 (400+ 줄)
+│       ├── Harmonic consistency
+│       ├── Swing ratio
+│       ├── Style diversity
+│       └── Chord tone usage
 │
-└── scripts/
-    ├── download_pretrained.py
-    └── prepare_data.py
+├── configs/                           # ✅ 완전 구현
+│   └── default.yaml                  # 완전한 설정 파일
+│       ├── Model config
+│       ├── Training config
+│       ├── Finetuning config
+│       └── Jazz-specific settings
+│
+├── paper/                             # ✅ 완전 구현
+│   └── draft.md                      # 논문 초안 (ICML 형식)
+│
+└── tests/                             # TODO
+    ├── test_model.py
+    ├── test_tokenizer.py
+    └── test_dataset.py
+
+총 줄 수: 4,000+ 줄의 완전한 구현!
 ```
 
 ---
