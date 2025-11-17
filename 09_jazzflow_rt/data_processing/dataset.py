@@ -16,6 +16,7 @@ import pickle
 import sys
 sys.path.append(str(Path(__file__).parent))
 from midi_tokenizer import REMITokenizer
+from chord_recognition import ChordRecognizer
 
 
 class JazzMIDIDataset(Dataset):
