@@ -1,0 +1,13 @@
+# JazzFlow - Minimal Dependencies
+
+# Core
+torch>=2.0.0
+numpy>=1.21.0
+
+# MIDI
+pretty-midi>=0.2.10
+
+# Training
+tqdm>=4.65.0
+
+# That's it. No bloat.
