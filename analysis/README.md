@@ -1,8 +1,8 @@
-# SOTA Music Generation Models 분석
+# 2025년 재즈 AI 분야 종합 분석
 
-**분석 날짜**: 2025년 11월 18일
-**분석 모델**: ImprovNet, Magenta RealTime
-**목적**: 두 최신 SOTA 모델 심층 분석 및 JazzFlow 프로젝트 개선 방향 도출
+**분석 날짜**: 2025년 11월 23일
+**분석 모델**: ImprovNet, ReaLJam, Jazz Piano Style, SiMBA, Sveið
+**목적**: 재즈 AI 분야 최신 SOTA 모델 심층 분석 및 실무 적용 가이드
 
 ---
 
@@ -10,15 +10,39 @@
 
 ```
 analysis/
-├── README.md                      # 이 파일
-├── IMPROVNET_ANALYSIS.md          # ImprovNet 상세 분석
-├── MAGENTA_REALTIME_ANALYSIS.md   # Magenta RealTime 상세 분석
-└── COMPARATIVE_ANALYSIS.md        # 두 모델 비교 분석
+├── README.md                              # 이 파일
+├── 2025_JAZZ_AI_COMPREHENSIVE_ANALYSIS.md # 🌟 종합 분석 (필독)
+├── IMPROVNET_ANALYSIS.md                  # ImprovNet 상세 분석
+├── REALJAM_ANALYSIS.md                    # ReaLJam 상세 분석 (NEW!)
+├── JAZZ_PIANO_STYLE_ANALYSIS.md           # Jazz Piano Style 분석 (NEW!)
+├── SIMBA_ANALYSIS.md                      # SiMBA 아키텍처 분석 (NEW!)
+├── SVEID_LATENT_IMPRINTS_ANALYSIS.md      # Sveið 공연 사례 분석 (NEW!)
+├── MAGENTA_REALTIME_ANALYSIS.md           # Magenta RealTime 상세 분석
+├── COMPARATIVE_ANALYSIS.md                # ImprovNet vs Magenta RT 비교
+├── CRITICAL_REVIEW.md                     # 비판적 리뷰
+└── CRITICAL_REVIEW_KR.md                  # 비판적 리뷰 (한국어)
 ```
 
 ---
 
-## 📄 문서 개요
+## 🌟 필독: 종합 분석 문서
+
+### 2025_JAZZ_AI_COMPREHENSIVE_ANALYSIS.md
+
+**재즈 AI 분야 전체 개요**를 제공하는 핵심 문서입니다.
+
+**포함 내용**:
+- 5개 모델 전체 비교표
+- 상호 보완성 분석
+- 실무 활용 시나리오 (교육, 작곡, 공연, 스트리밍)
+- 미래 연구 방향
+- 학습 로드맵 (초급→중급→고급)
+
+**권장**: 먼저 이 문서를 읽고, 관심 있는 모델의 상세 분석으로 진행하세요.
+
+---
+
+## 📄 개별 모델 분석
 
 ### 1. ImprovNet 분석 (IMPROVNET_ANALYSIS.md)
 
@@ -66,7 +90,87 @@ analysis/
 
 ---
 
-### 3. 비교 분석 (COMPARATIVE_ANALYSIS.md)
+### 3. ReaLJam 분석 (REALJAM_ANALYSIS.md) **[NEW!]**
+
+**ReaLJam**: Real-time Live Jazz Improvisation with Reinforcement Learning
+
+**핵심 내용**:
+- Anticipation mechanism (2 beats lookahead)
+- 강화학습 (PPO) 적용
+- Waterfall display (AI 의도 시각화)
+- 초저지연 (41ms) 실시간 합주
+- 사용자 연구 결과
+
+**주요 성과**:
+- 41ms 지연 (실시간 합주 가능)
+- RL 모델이 SL보다 모든 항목 우수 (4.5/5 vs 3.2/5)
+- 270 MB 경량 모델 (모바일 배포 가능)
+
+**페이지**: ~60 pages (markdown)
+
+---
+
+### 4. Jazz Piano Style 분석 (JAZZ_PIANO_STYLE_ANALYSIS.md) **[NEW!]**
+
+**Deconstructing Jazz Piano Style**: Explainable Deep Learning
+
+**핵심 내용**:
+- Multi-stream network (멜로디, 화성, 리듬, 다이나믹스)
+- 설명 가능한 AI (Explainability)
+- 20명 피아니스트 스타일 분류
+- 요소별 기여도 분석
+- 음악 교육 응용
+
+**주요 성과**:
+- 94% 정확도 (20-way classification)
+- 요소별 기여도 정량화 (예: Bill Evans = Harmony 40%)
+- 84h 데이터로 SOTA 달성
+
+**페이지**: ~70 pages (markdown)
+
+---
+
+### 5. SiMBA 분석 (SIMBA_ANALYSIS.md) **[NEW!]**
+
+**SiMBA**: Simplifying Mamba for Music Generation with Linear Complexity
+
+**핵심 내용**:
+- State Space Model (Mamba) 응용
+- O(n) 선형 복잡도 (vs Transformer O(n²))
+- Selective SSM
+- 빠른 수렴 및 메모리 효율성
+- 텍스트→음악 생성
+
+**주요 성과**:
+- 2-3× 빠른 학습 (Transformer 대비)
+- 50% 메모리 절감
+- 제한된 데이터에서 더 우수 (81% vs 72%)
+
+**페이지**: ~55 pages (markdown)
+
+---
+
+### 6. Sveið - Latent Imprints 분석 (SVEID_LATENT_IMPRINTS_ANALYSIS.md) **[NEW!]**
+
+**Sveið 트리오**: "Latent Imprints" 앨범 (2025.06.26 발매)
+
+**핵심 내용**:
+- Neural audio synthesis (RAVE, DDSP)
+- Latent space 실시간 탐색
+- Live coding + AI 즉흥 연주
+- 인간-AI co-creation
+- 예술적 실험의 실제 사례
+
+**주요 성과**:
+- 최초의 AI-Human 재즈 즉흥 앨범
+- Neural audio models의 실제 공연 적용
+- 재즈의 경계 확장 (timbre, texture)
+
+**페이지**: ~50 pages (markdown)
+
+---
+
+### 7. 비교 분석 (COMPARATIVE_ANALYSIS.md)
 
 **종합 비교**: ImprovNet vs Magenta RealTime
 
@@ -379,18 +483,27 @@ Week 11-14: Advanced Features
 
 ---
 
-**Last Updated**: 2025-11-18
-**Version**: 1.0
-**Status**: Complete ✅
+**Last Updated**: 2025-11-23
+**Version**: 2.0
+**Status**: Complete ✅ (5개 모델 분석 완료)
 
 ---
 
 ## TL;DR
 
-두 SOTA 모델을 분석하여 JazzFlow v2.0 설계 방향을 도출했습니다:
+**2025년 재즈 AI 분야 5대 핵심 모델**을 종합 분석했습니다:
 
-1. **ImprovNet**: Corruption-Refinement로 제어 가능한 스타일 변환
-2. **Magenta RT**: Live Generation으로 실시간 상호작용
-3. **Hybrid Approach**: 두 기법 결합 → 최고의 시너지
+1. **ImprovNet** (생성 및 제어): Corruption-Refinement로 세밀한 스타일 제어
+2. **ReaLJam** (실시간 상호작용): 강화학습 기반 41ms 초저지연 합주
+3. **Jazz Piano Style** (설명 가능한 분석): 94% 정확도로 스타일 분해
+4. **SiMBA** (효율적 아키텍처): O(n) 복잡도로 실용성 극대화
+5. **Sveið** (예술적 실험): Neural audio로 새로운 음악 탐구
 
-**다음 단계**: 14주 구현 로드맵 따라 JazzFlow v2.0 개발 시작! 🎵
+**핵심 통찰**: 각 모델은 상호 보완적이며, 통합 시 완벽한 재즈 AI 생태계 구축 가능
+
+**권장 읽기 순서**:
+1. 📖 `2025_JAZZ_AI_COMPREHENSIVE_ANALYSIS.md` (전체 개요)
+2. 🎯 관심 모델의 상세 분석
+3. 🔬 `CRITICAL_REVIEW_KR.md` (비판적 관점)
+
+**다음 단계**: Unified Framework (모든 장점 통합) → JazzFlow v3.0 🎵🚀
